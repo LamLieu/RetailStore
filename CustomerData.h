@@ -7,64 +7,55 @@ class PersonData {
 private:
 	string lastName;
 	string firstName;
-	string address;
+	string streetName, streetType;
 	string city;
 	string state;
-	int zip;
-	int phone;
-	PersonData();
+	string zip;
+	string phone;
+	string streetNumber;
+	PersonData() {};
 protected:
-	PersonData(string l_name, string f_name, string address, string city,
-		string state, int zip, int phone);
+	PersonData(string l_name, string f_name, string streetName, string streetType,
+		string city, string state, string streetNumber, string zip, string phone);
 public:
-	const string & getLastName() { return lastName; }
-	const string & getFirstName() { return firstName; }
-	const string & getAddress() { return address; }
-	const string & getCity() { return city; }
-	const string & getState() { return state; }
-	const int getZip() { return zip; }
-	const int getPhone() { return phone; }
+	const string & getLastName();
+	const string & getFirstName();
+	const string & getAddress();
+	const string & getCity();
+	const string & getState();
+	const string & getZip();
+	const string & getPhone();
 
-	void setLastName(string l_name) {
-		lastName = l_name;
-	}
-	void setFirstName(string f_name) {
-		firstName = f_name;
-	}
-	void setAddress(string address) {
-		this->address = address;
-	}
-	void setCity(string city) {
-		this->city = city;
-	}
-	void setState(string state) {
-		this->state = state;
-	}
-	void setZip(int zip) {
-		this->zip = zip;
-	}
-	void setPhone(int phone) {
-		this->phone = phone;
-	}
+	void setLastName(string l_name);
+	void setFirstName(string f_name);
+	void setAddress(string streetNumber, string streetName, string streetType);
+	void setCity(string city);
+	void setState(string state);
+	void setZip(string zip);
+	void setPhone(string phone);
 };
 
-class CustomerData : PersonData {
+class CustomerData : public PersonData {
 private:
 	unsigned int customerNumber;
 	bool mailingList;
 public:
-	CustomerData();
+	CustomerData(string l_name, string f_name, string streetName, string streetType,
+		string city, string state, string streetNumber, string zip, string phon);
 
 	void changeMailingList();
 };
 
-class PreferredCustomer : CustomerData {
+class PreferredCustomer : public CustomerData {
 private:
 	double purchaseAmount;
 	double discountLevel;
+	double moneySpent;
 public:
-	PreferredCustomer();
+	PreferredCustomer(string l_name, string f_name, string streetName, string streetType,
+		string city, string state, string streetNumber, string zip, string phone);
 
-	void setPlan(double purchaseAmount);
-	void addSpending(double moneySpent);
+	void setPlan();
+	void increasePurchaseAmount();
+	void print();
 };
