@@ -61,9 +61,11 @@ void CustomerData::changeMailingList() {
 	cin >> userAnswer;
 	if (userAnswer.at(0) == 'Y' || userAnswer.at(0) == 'y') {
 		mailingList = true;
+		cout << "You are now on the mailing list." << endl;
 	}
 	else if (userAnswer.at(0) == 'N' || userAnswer.at(0) == 'n') {
 		mailingList = false;
+		cout << "You are no longer on the mailing list." << endl;
 	}
 	else {
 		cout << "Error: You did not enter \"Y\" or \"N\"" << endl;
@@ -101,5 +103,5 @@ void PreferredCustomer::increasePurchaseAmount() {
 
 void PreferredCustomer::print() {
 	cout << "The total amount of money spent in the store is " << purchaseAmount << endl;
-	cout << "Your discount level is " << discountLevel << endl;
+	cout << "Your discount level is " << discountLevel * 100 << "%."<< endl;
 }
